@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"runtime"
 	"net/http"
 	"encoding/json"
@@ -9,7 +10,7 @@ import (
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	// mendar.APIKey = "TODO"
+	meander.APIKey = os.Getenv("MEANDER_API_KEY")
 	http.HandleFunc("/journeys", func(w http.ResponseWriter, r *http.Request){
 		respond(w, r, meander.Journeys)
 	})
