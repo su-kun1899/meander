@@ -1,5 +1,9 @@
 package meander
 
+import (
+	"strings"
+)
+
 type j struct {
 	Name string
 	PlaceTypes []string
@@ -11,4 +15,11 @@ var Journeys = []interface{}{
 	&j{Name: "ナイトライフ", PlaceTypes: []string{"bar", "casino", "food", "bar", "night_club", "bar", "bar", "hospital"}},
 	&j{Name: "カルチャー", PlaceTypes: []string{"museum", "cafe", "cemetary", "library", "art_gallery"}},
 	&j{Name: "リラックス", PlaceTypes: []string{"hair_care", "beauty_salon", "cafe", "salon"}},
+}
+
+func (j *j) Public() interface{} {
+	return map[string]interface{}{
+		"name": j.Name,
+		"journey": strings.Join(j.PlaceTypes, "|"),
+	}
 }
