@@ -70,6 +70,7 @@ func (q *Query) find(types string) (*googleResponse, error) {
 		vals.Set("minprice", fmt.Sprintf("%d", int(r.From)-1))
 		vals.Set("maxprice", fmt.Sprintf("%d", int(r.To)-1))
 	}
+	fmt.Println("Call API: " + u + "?" + vals.Encode())
 	res, err := http.Get(u + "?" + vals.Encode())
 	if err != nil {
 		return nil, err
